@@ -11,9 +11,9 @@ function Search_City(props) {
  
   const search = (city) => {
     axios
-      .get(
+    .get(
         `${apiKeys.base}weather?q=${
-          city !== "[object Object]" ? city : query
+          city != "[object Object]" ? city : query
         }&units=metric&APPID=${apiKeys.key}`
       )
       .then((response) => {
