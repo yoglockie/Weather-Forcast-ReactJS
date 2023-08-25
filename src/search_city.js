@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Apartment} from "@mui/icons-material";
+import {Apartment,Cloud} from "@mui/icons-material";
 import axios from "axios";
 import apiKeys from "./apiKeys";
 
@@ -59,53 +59,104 @@ function Search_City(props) {
             />
           </div>
         </div>
-        <ul>
-          {typeof weather.main != "undefined" ? (
-            <div>
-              {" "}
-              <li className="cityHead">
-                <p>
-                  {weather.name}, {weather.sys.country}
-                </p>
-                <img
-                  className="temp"
-                  alt=""
-                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
-                />
-              </li>
-              <li>
-                Temperature{" "}
-                <span className="temp">
-                  {Math.round(weather.main.temp)}°c ({weather.weather[0].main})
-                </span>
-              </li>
-              <li>
-                Humidity{" "}
-                <span className="temp">
-                  {Math.round(weather.main.humidity)}%
-                </span>
-              </li>
-              <li>
-                Visibility{" "}
-                <span className="temp">
-                  {Math.round(weather.visibility)} mi
-                </span>
-              </li>
-              <li>
-                Wind Speed{" "}
-                <span className="temp">
-                  {Math.round(weather.wind.speed)} Km/h
-                </span>
-              </li>
+        
+        <div>
+        
+        {typeof weather.main != "undefined" ? 
+        
+        <div className="right-lower">
+           {" "}
+           <div className="searched-city cityHead">
+                  <p className="hw-info" >
+                   {weather.name}, {weather.sys.country}
+                 </p>    
             </div>
-          ) : (
-            <li>
-              {error.query} {error.message}
-            </li>
-          )}
-        </ul>
+            <div className="w-info">
+                    <div className="wi-info">
+                        <p className="hw-info">Temperature{" "}</p>
+                        <p>{Math.round(weather.main.temp)}°c </p>
+                    </div>
+                    <div className="wi-info">
+                    <p className="hw-info">Humidity{" "}</p>
+                        <p>{Math.round(weather.main.humidity)}% </p>
+                    </div>
+                    <div className="wi-info">
+                    <p className="hw-info">Visibility{" "}</p>
+                        <p>{Math.round(weather.visibility)} mi </p>
+                    </div>
+                    <div className="wi-info">
+                    <p className="hw-info">Wind Speed{" "}</p>
+                    <p>{Math.round(weather.wind.speed)} Km/h </p>
+                    </div>
+            </div>
+        </div>
+        
+        
+        :
+        
+        
+        <div className="cityHead">
+          <p style={{color:"white"}}>{error.query} {error.message}</p>
+        </div>
+        
+        
+        }
+        
+        
+        </div>
       </div>
     </div>
   );
+  
 }
 export default Search_City;
+
+
+
+  //  <ul>
+  //         {typeof weather.main != "undefined" ? (
+  //           <div>
+  //             {" "}
+  //             <li className="cityHead">
+  //               <p>
+  //                 {weather.name}, {weather.sys.country}
+  //               </p>
+  //               {/* <img
+  //                 className="temp"
+  //                 alt=""
+  //                 src={`./images/cloud.jpg`}
+  //               /> */}
+  //             </li>
+  //             <li>
+  //               Temperature{" "}
+  //               <span className="temp">
+  //                 {Math.round(weather.main.temp)}°c 
+  //               </span>
+  //             </li>
+  //             <li>
+  //               Humidity{" "}
+  //               <span className="temp">
+  //                 {Math.round(weather.main.humidity)}%
+  //               </span>
+  //             </li>
+  //             <li>
+  //               Visibility{" "}
+  //               <span className="temp">
+  //                 {Math.round(weather.visibility)} mi
+  //               </span>
+  //             </li>
+  //             <li>
+  //               Wind Speed{" "}
+  //               <span className="temp">
+  //                 {Math.round(weather.wind.speed)} Km/h
+  //               </span>
+  //             </li>
+  //           </div>
+  //         ) : (
+  //           <li>
+  //             {error.query} {error.message}
+  //           </li>
+  //         )}
+  //       </ul>
+
+

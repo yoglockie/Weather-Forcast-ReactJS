@@ -52,7 +52,7 @@ const getforMonth=(fm)=>{
 }
 
 
-class Lod extends React.Component{
+class Weath extends React.Component{
     
     state = {
         lat: undefined,
@@ -177,10 +177,10 @@ class Lod extends React.Component{
                         
                     <div className="left-mid">
                         <div className="lleft-mid">
-                        <h1><Clock format="HH:mm:ss" interval={1000} ticking={true} /></h1>
+                            <h1><Clock format="HH:mm:ss" interval={1000} ticking={true} /></h1>
                             <h2>{builddate(new Date())}</h2>
                         </div>
-                        <div>
+                        <div className="left-mid-right">
                         <p style={{fontSize:'4em'}}>{this.state.temperatureC}°C <br/><span style={{fontSize:"50px"}}>{this.state.main}</span></p>
                         
                         </div>
@@ -189,30 +189,30 @@ class Lod extends React.Component{
                    
                    <div className="left-lower">
                          <div className="forcast">
-                              <Cloud style={{color:'skyblue'}}></Cloud>
-                              <p>Cloudy</p>
+                              
+                             <p>30°C</p>
                               <p>{getforDate(new Date()) + 1}/{getforMonth(new Date())}</p>
                                 
                               
                          </div>
                          <div className="forcast">
-                              <WbSunny style={{color:'Yellow'}}></WbSunny>
-                              <p>Sunny</p>
+                              
+                              <p>30°C</p>
                               <p>{getforDate(new Date()) + 2}/{getforMonth(new Date())}</p>
                          </div>
                          <div className="forcast">
-                              <SevereCold style={{color:'skyblue'}}></SevereCold>
-                              <p>Severe Cold</p>
+                              
+                             <p>30°C</p>
                               <p>{getforDate(new Date()) + 3}/{getforMonth(new Date())}</p>
                          </div>
                          <div className="forcast">
-                              <Cyclone style={{color:'skyblue'}}></Cyclone>
-                              <p>Cyclone</p>
+                              
+                             <p>30°C</p>
                               <p>{getforDate(new Date()) + 4}/{getforMonth(new Date())}</p>
                          </div>
                          <div className="forcast">
-                              <Tornado style={{color:'skyblue'}}></Tornado>
-                              <p>Tornado</p>
+                              
+                              <p>30°C</p>
                               <p>{getforDate(new Date()) + 5}/{getforMonth(new Date())}</p>
                          </div>
                    </div>
@@ -226,7 +226,7 @@ class Lod extends React.Component{
     
 }
 
-export default Lod;
+export default Weath;
                   
                 
                   

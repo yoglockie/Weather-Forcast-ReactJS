@@ -1,10 +1,10 @@
 import './App.css';
 
-import Lod from './component';
+import Weath from './component';
 function App() {
   return (
     <div>
-    <Lod />
+    <Weath />
     </div>
   );
 }
