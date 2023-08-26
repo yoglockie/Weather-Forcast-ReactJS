@@ -1,5 +1,5 @@
 import React from "react";
-import { Cloud, SevereCold,Cyclone,Tornado} from "@mui/icons-material";
+import { Cloud, SevereCold,Cyclone,Tornado,Snow,Thunderstorm,Drizzle,Rain,Mist,Smoke,Haze,Dust,Fog,SendAndArchive,Ash,Squall,Clear} from "@mui/icons-material";
 
 import {WbSunny} from "@mui/icons-material";
 import Clock from "react-live-clock";
@@ -40,15 +40,28 @@ const builddate=(d)=>{
     
 }
 
-const getforDate=(fd)=>{
+const getforDate=(fd,i)=>{
       
-      
-       return (fd.getDate());
+     let st = new Date(fd.setDate(fd.getDate()+i))
+     let d= st.getDate();
+     if(d<10)
+     {
+      let t = '0'+d;
+      return t
+     }
+      return d;
 }
 
-const getforMonth=(fm)=>{
-
-    return (fm.getMonth());
+const getforMonth=(fm,i)=>{
+  let st = new Date(fm.setDate(fm.getDate()+i))
+  let d= st.getMonth()+1;
+  if(d<10)
+     {
+      let t = '0'+d;
+      return t
+     }
+   return d;
+   
 }
 
 
@@ -68,6 +81,17 @@ class Weath extends React.Component{
         sunrise: undefined,
         sunset: undefined,
         errorMsg: undefined,
+        temp1:undefined,
+        temp2:undefined,
+        temp3:undefined,
+        temp4:undefined,
+        temp5:undefined,
+        icon1:undefined,
+        icon2:undefined,
+        icon3:undefined,
+        icon4:undefined,
+        icon5:undefined,
+        
       };
 
       componentDidMount() {
@@ -112,6 +136,15 @@ class Weath extends React.Component{
         );
         
         const data = await api_call.json();
+        console.log(data)
+
+        const api_call_forecast = await fetch(
+          `${apiKeys.base}forecast?lat=${lat}&lon=${lon}&appid=${apiKeys.key}`
+        );
+        const forecast_data = await api_call_forecast.json();
+        console.log(forecast_data)
+
+        
        
         this.setState({
           lat: lat,
@@ -126,6 +159,16 @@ class Weath extends React.Component{
           country: data.sys.country,
           speed: data.wind.speed,
           visibility:data.visibility,
+          temp1:forecast_data.list[1].main.temp,
+          temp2:forecast_data.list[2].main.temp,
+          temp3:forecast_data.list[3].main.temp,
+          temp4:forecast_data.list[4].main.temp,
+          temp5:forecast_data.list[5].main.temp,
+          icon1:forecast_data.list[1].weather[0].icon,
+          icon2:forecast_data.list[2].weather[0].icon,
+          icon3:forecast_data.list[3].weather[0].icon,
+          icon4:forecast_data.list[4].weather[0].icon,
+          icon5:forecast_data.list[5].weather[0].icon,
          
         });
 
@@ -164,7 +207,7 @@ class Weath extends React.Component{
       };
     
       
-
+      
 
     render(){
         return(
@@ -190,30 +233,36 @@ class Weath extends React.Component{
                    <div className="left-lower">
                          <div className="forcast">
                               
-                             <p>30°C</p>
-                              <p>{getforDate(new Date()) + 1}/{getforMonth(new Date())}</p>
+                             <p>{Math.round((this.state.temp1)-273)}°C</p>
+                              <img src={`http://openweathermap.org/img/w/" + ${this.state.icon2}+"@2x"+ ".png"`} alt="" />
+                              <p>{this.state.icon1}</p>
+                              <p>Tomorrow</p>
                                 
                               
                          </div>
                          <div className="forcast">
                               
-                              <p>30°C</p>
-                              <p>{getforDate(new Date()) + 2}/{getforMonth(new Date())}</p>
+                              <p>{Math.round((this.state.temp2)-273)}°C</p>
+                              <p>{this.state.icon2}</p>
+                              <p>{getforDate(new Date(),2)}/{getforMonth(new Date(),2)}</p>
                          </div>
                          <div className="forcast">
                               
-                             <p>30°C</p>
-                              <p>{getforDate(new Date()) + 3}/{getforMonth(new Date())}</p>
+                             <p>{Math.round((this.state.temp3)-273)}°C</p>
+                             <p>{this.state.icon3}</p>
+                              <p>{getforDate(new Date(),3)}/{getforMonth(new Date(),3)}</p>
                          </div>
                          <div className="forcast">
                               
-                             <p>30°C</p>
-                              <p>{getforDate(new Date()) + 4}/{getforMonth(new Date())}</p>
+                             <p>{Math.round((this.state.temp4)-273)}°C</p>
+                             <p>{this.state.icon4}</p>
+                              <p>{getforDate(new Date(),4) }/{getforMonth(new Date(),4)}</p>
                          </div>
                          <div className="forcast">
                               
-                              <p>30°C</p>
-                              <p>{getforDate(new Date()) + 5}/{getforMonth(new Date())}</p>
+                              <p>{Math.round((this.state.temp5)-273)}°C</p>
+                              <p>{this.state.icon5}</p>
+                              <p>{getforDate(new Date(),5)}/{getforMonth(new Date(),5)}</p>
                          </div>
                    </div>
                 </div>

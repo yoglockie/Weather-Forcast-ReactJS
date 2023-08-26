@@ -89,6 +89,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   
 }
 
@@ -265,6 +266,10 @@
 }
 .wi-info{
      padding: 10px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
      
 }
 
