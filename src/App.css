@@ -121,10 +121,12 @@
   width: 40%;
   float: left;
   height: 100%;
+  
 }
 
 .forecast-icon {
   padding: 25px 0;
+
   /* background: white; */
 }
 

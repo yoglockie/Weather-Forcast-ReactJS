@@ -1,10 +1,12 @@
 import React from "react";
-import { Cloud, SevereCold,Cyclone,Tornado,Snow,Thunderstorm,Drizzle,Rain,Mist,Smoke,Haze,Dust,Fog,SendAndArchive,Ash,Squall,Clear} from "@mui/icons-material";
+import { Cloud } from "@mui/icons-material";
 
 import {WbSunny} from "@mui/icons-material";
 import Clock from "react-live-clock";
 import apiKeys from "./apiKeys";
 import Search_City from "./search_city";
+import { Icon } from "@mui/material";
+
 const builddate=(d)=>{
     let months = [
         "January",
@@ -169,47 +171,25 @@ class Weath extends React.Component{
           icon3:forecast_data.list[3].weather[0].icon,
           icon4:forecast_data.list[4].weather[0].icon,
           icon5:forecast_data.list[5].weather[0].icon,
-         
+          icon:data.weather[0].icon,
         });
 
         
-        switch (this.state.main) {
-          case "Haze":
-            this.setState({ icon: "CLEAR_DAY" });
-            break;
-          case "Clouds":
-            this.setState({ icon: "CLOUDY" });
-            break;
-          case "Rain":
-            this.setState({ icon: "RAIN" });
-            break;
-          case "Snow":
-            this.setState({ icon: "SNOW" });
-            break;
-          case "Dust":
-            this.setState({ icon: "WIND" });
-            break;
-          case "Drizzle":
-            this.setState({ icon: "SLEET" });
-            break;
-          case "Fog":
-            this.setState({ icon: "FOG" });
-            break;
-          case "Smoke":
-            this.setState({ icon: "FOG" });
-            break;
-          case "Tornado":
-            this.setState({ icon: "WIND" });
-            break;
-          default:
-            this.setState({ icon: "CLEAR_DAY" });
-        }
+       
       };
     
       
       
 
+
     render(){
+      const icon1 = this.state.icon1;
+      const icon2 = this.state.icon2;
+      const icon3 = this.state.icon3;
+      const icon4 = this.state.icon4;
+      const icon5 = this.state.icon5;
+      
+      
         return(
             <div className="container">
                 <div className="left">
@@ -233,35 +213,36 @@ class Weath extends React.Component{
                    <div className="left-lower">
                          <div className="forcast">
                               
-                             <p>{Math.round((this.state.temp1)-273)}°C</p>
-                              <img src={`http://openweathermap.org/img/w/" + ${this.state.icon2}+"@2x"+ ".png"`} alt="" />
-                              <p>{this.state.icon1}</p>
-                              <p>Tomorrow</p>
+                            <p>{Math.round((this.state.temp1)-273)}°C</p>
+                            <img src={`https://openweathermap.org/img/wn/${icon1}@2x.png`} alt="" height={"50px"} width={"50px"}/>
+                            <p>Tomorrow</p>
+                               
+                              
                                 
                               
                          </div>
                          <div className="forcast">
                               
                               <p>{Math.round((this.state.temp2)-273)}°C</p>
-                              <p>{this.state.icon2}</p>
+                              <img src={`https://openweathermap.org/img/wn/${icon2}@2x.png`} alt="" height={"50px"} width={"50px"}/>
                               <p>{getforDate(new Date(),2)}/{getforMonth(new Date(),2)}</p>
                          </div>
                          <div className="forcast">
                               
                              <p>{Math.round((this.state.temp3)-273)}°C</p>
-                             <p>{this.state.icon3}</p>
+                             <img src={`https://openweathermap.org/img/wn/${icon3}@2x.png`} alt="" height={"50px"} width={"50px"}/>
                               <p>{getforDate(new Date(),3)}/{getforMonth(new Date(),3)}</p>
                          </div>
                          <div className="forcast">
                               
                              <p>{Math.round((this.state.temp4)-273)}°C</p>
-                             <p>{this.state.icon4}</p>
+                             <img src={`https://openweathermap.org/img/wn/${icon4}@2x.png`} alt="" height={"50px"} width={"50px"}/>
                               <p>{getforDate(new Date(),4) }/{getforMonth(new Date(),4)}</p>
                          </div>
                          <div className="forcast">
                               
                               <p>{Math.round((this.state.temp5)-273)}°C</p>
-                              <p>{this.state.icon5}</p>
+                              <img src={`https://openweathermap.org/img/wn/${icon5}@2x.png`} alt="" height={"50px"} width={"50px"}/>
                               <p>{getforDate(new Date(),5)}/{getforMonth(new Date(),5)}</p>
                          </div>
                    </div>
@@ -278,9 +259,4 @@ class Weath extends React.Component{
 export default Weath;
                   
                 
-                  
-    
-
-
-
-                        
+   

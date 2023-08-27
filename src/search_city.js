@@ -68,7 +68,7 @@ function Search_City(props) {
            {" "}
            <div className="searched-city cityHead">
                   <p className="hw-info" >
-                   {weather.name}, {weather.sys.country}
+                 {weather.name}, {weather.sys.country}
                  </p>    
             </div>
             <div className="w-info">
