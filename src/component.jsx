@@ -130,6 +130,7 @@ class Weath extends React.Component{
           function (resolve, reject) {
           navigator.geolocation.getCurrentPosition(resolve, reject, options);
           }
+          
         );
       };
       getWeather = async (lat, lon) => {
@@ -153,7 +154,6 @@ class Weath extends React.Component{
           lon: lon,
           city: data.name,
           temperatureC: Math.round(data.main.temp),
-          temperatureF: Math.round(data.main.temp * 1.8 + 32),
           humidity: data.main.humidity,
           main: data.weather[0].main,
           descr: data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1),
@@ -237,7 +237,7 @@ class Weath extends React.Component{
                               
                              <p>{Math.round((this.state.temp4)-273)}°C</p>
                              <img src={`https://openweathermap.org/img/wn/${icon4}@2x.png`} alt="" height={"50px"} width={"50px"}/>
-                              <p>{getforDate(new Date(),4) }/{getforMonth(new Date(),4)}</p>
+                             <p>{getforDate(new Date(),4) }/{getforMonth(new Date(),4)}</p>
                          </div>
                          <div className="forcast">
                               
